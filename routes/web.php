@@ -3,6 +3,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Sentry\Laravel\Tracing\Middleware;
+use App\Http\Controllers\DashboardProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,25 +25,51 @@ Route::get('/toko', [App\Http\Controllers\TokoController::class, 'index'])->name
 Route::get('/toko/details/{id}', [App\Http\Controllers\DetailsStoreController::class, 'showProfile'])->name('details-store');
 
 
-Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-Route::get('/dashboard/product', [App\Http\Controllers\DashboardProductController::class, 'index'])->name('dashboard-product');
-Route::get('/dashboard/product/create', [App\Http\Controllers\DashboardProductController::class, 'create'])->name('dashboard-products-create');
-Route::get('/dashboard/product/{id}', [App\Http\Controllers\DashboardProductController::class, 'details'])->name('dashboard-products-details');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/dashboard/settings', [App\Http\Controllers\DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
-Route::get('/dashboard/account', [App\Http\Controllers\DashboardSettingController::class, 'account'])->name('dashboard-settings-account');
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/product', [App\Http\Controllers\DashboardProductController::class, 'index'])->name('dashboard-product');
+        Route::get('/product/create', [App\Http\Controllers\DashboardProductController::class, 'create'])->name('dashboard-product-create');
+        Route::post('/product', [App\Http\Controllers\DashboardProductController::class, 'store'])->name('dashboard-product-store');
+        Route::get('/product/{id}', [App\Http\Controllers\DashboardProductController::class, 'details'])->name('dashboard-product-details');
 
-Route::get('/admin', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
-Route::resource('/admin/kategori', App\Http\Controllers\Admin\CategoryController::class)->names('category');
+         Route::post('/product/{id}', [App\Http\Controllers\DashboardProductController::class, 'update'])->name('dashboard-product-update');
 
-Route::post('/admin/kategori', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store');
+         Route::delete('/product/{id}', [App\Http\Controllers\DashboardProductController::class, 'destroy'])->name('dashboard-products.destroy');
+
+        Route::get('/product/gallery/delete/{id}', [DashboardProductController::class, 'delete'])->name('dashboard-product-gallery-delete');
+
+      Route::post('/product/gallery/upload', [DashboardProductController::class, 'uploadGallery'])->name('dashboard-product-gallery-upload');
+
+        Route::get('/settings', [App\Http\Controllers\DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
 
 
 
-Route::resource('/admin/user', App\Http\Controllers\Admin\UserController::class )->name('user.index', 'user');
+        Route::get('/account', [App\Http\Controllers\DashboardSettingController::class, 'account'])->name('dashboard-settings-account');
 
-Route::resource('/admin/product', App\Http\Controllers\Admin\ProductController::class )->name('product.index', 'product');
+                Route::post('/settings/{redirect}', [App\Http\Controllers\DashboardSettingController::class, 'update'])->name('dashboard-settings-redirect');
 
-Route::resource('/admin/product-gallery', App\Http\Controllers\Admin\ProductGalleryController::class )->name('product-gallery.index', 'product-gallery');
+    });
+});
+
+
+
+
+Route::prefix('admin')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+        Route::get('/', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin-dashboard');
+        
+        Route::resource('/kategori', App\Http\Controllers\Admin\CategoryController::class)->names('category');
+        Route::post('/kategori', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store');
+        
+        Route::resource('/user', App\Http\Controllers\Admin\UserController::class)->names('user');
+        
+        Route::resource('/product', App\Http\Controllers\Admin\ProductController::class)->names('product');
+        
+        Route::resource('/product-gallery', App\Http\Controllers\Admin\ProductGalleryController::class)->names('product-gallery');
+});
+
 
 Auth::routes();

@@ -9,6 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    <link rel="shortcut icon" href="{{ asset('images/logo1.svg')}}">
     <title>@yield('title')</title>
     {{-- style --}}
     @stack('prepend-style')

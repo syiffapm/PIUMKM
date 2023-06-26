@@ -9,6 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
+    <link rel="shortcut icon" href="{{ asset('images/logo1.svg')}}">
     <title>@yield('title')</title>
 
     @stack('prepend-style')
@@ -23,35 +24,40 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
           <div class="sidebar-heading text-center">
-            <img src="/images/admin.svg" alt="" class="my-4 w-100" />
+            <img src="/images/admin.svg" alt="" class="my-4 w-50" />
           </div>
           <div class="list-group list-group-flush">
             <a
-              href="/dashboard.html"
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard')) ? 'active' : '' }}"
               >Dashboard</a
             >
               <a
-              href=""
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-settings-account') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/account*')) ? 'active' : '' }}"
               >Profile Saya</a>
             <a
-              href=""
-              class="list-group-item list-group-item-action"
-              >Produk Saya</a
+              href="{{ route('dashboard-product') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/product*')) ? 'active' : '' }} "
+            >Produk Saya</a
             >
             <a
-              href=""
-              class="list-group-item list-group-item-action"
+              href="{{ route('dashboard-settings-store') }}"
+              class="list-group-item list-group-item-action {{ (request()->is('dashboard/settings*')) ? 'active' : '' }}"
               >Pengaturan Toko</a
             >
             <a
-              href=""
+              href="{{ route('logout') }}"
+             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
               class="list-group-item list-group-item-action"
               >Keluar</a
             >
           </div>
         </div>
+
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -81,51 +87,57 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto d-none d-lg-flex">
-                <li class="nav-item dropdown">
-                  <a
-                    class="nav-link"
-                    href="#"
-                    id="navbarDropdown"
-                    role="button"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <img
-                      src="/images/icon-user.png"
-                      alt=""
-                      class="rounded-circle mr-2 profile-picture"
-                    />
-                    Hi, Angga
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/index.html"
-                      >Back to Store</a
+                 <li class="nav-item dropdown">
+                    <a
+                        href="#"
+                        class="nav-link"
+                        id="navbarDropdown"
+                        role="button"
+                        data-toggle="dropdown"
                     >
-                    <a class="dropdown-item" href="/dashboard-account.html"
-                      >Settings</a
-                    >
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/">Logout</a>
-                  </div>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block mt-2" href="#">
-                    <img src="/images/icon-cart-empty.svg" alt="" />
-                  </a>
+                        <img
+                            src="/images/icon-user.png"
+                            alt=""
+                            class="rounded-circle mr-2 profile-picture"
+                        />
+                        Hi, {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+                        <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item">
+                            Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                               Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
                 </li>
               </ul>
               <!-- Mobile Menu -->
               <ul class="navbar-nav d-block d-lg-none mt-3">
                 <li class="nav-item">
                   <a class="nav-link" href="#">
-                    Hi, Angga
+                    Hi, {{ Auth::user()->name }}
                   </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block" href="#">
-                    Cart
-                  </a>
+                      <div class="dropdown-menu">
+                        <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+                        <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item">
+                            Settings
+                        </a>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                               Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
                 </li>
               </ul>
             </div>

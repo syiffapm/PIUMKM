@@ -6,52 +6,30 @@ UMKMJaksel
 
 @section('content')
     <div class="page-content page-home">
-      <section class="store-carousel">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12" data-aos="zoom-in">
-              <div
-                id="storeCarousel"
-                class="carousel slide"
-                data-ride="carousel"
-              >
-                <ol class="carousel-indicators">
-                  <li
-                    data-target="#storeCarousel"
-                    data-slide-to="0"
-                    class="active"
-                  ></li>
-                  <li data-target="#storeCarousel" data-slide-to="1"></li>
-                  <li data-target="#storeCarousel" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      src="/images/banner.jpg"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="/images/banner.jpg"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
-                  </div>
-                  <div class="carousel-item">
-                    <img
-                      src="/images/banner.jpg"
-                      class="d-block w-100"
-                      alt="Carousel Image"
-                    />
-                  </div>
-                </div>
-              </div>
+<section class="store-carousel">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12" data-aos="zoom-in">
+        <div id="storeCarousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#storeCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#storeCarousel" data-slide-to="1"></li>
+            
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="{{ asset('images/frame.jpg') }}" class="d-block w-100" alt="Carousel Image" />
+            </div>
+            <div class="carousel-item">
+              <img src="{{ asset('images/frame1.jpg') }}" class="d-block w-100" alt="Carousel Image" />
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <!-- kategori favorit -->
       <section class="store-trend-categories">
@@ -128,7 +106,7 @@ UMKMJaksel
                   ></div>
                 </div>
                 <div class="products-text">{{ $product->name }}</div>
-                <div class="products-price">Rp {{ $product->price }}</div>
+                <div class="products-price">Rp {{ number_format($product->price) }}</div>
               </a>
             </div>
                @empty

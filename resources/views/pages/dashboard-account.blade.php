@@ -19,7 +19,8 @@ UMKMJaksel Store Account
               <div class="dashboard-content">
                 <div class="row">
                   <div class="col-12">
-                    <form action="">
+                      <form action="{{ route('dashboard-settings-redirect','dashboard-settings-account') }}" method="POST" enctype="multipart/form-data">
+            @csrf
                       <div class="card">
                         <div class="card-body">
                           <div class="row mb-2">
@@ -32,7 +33,7 @@ UMKMJaksel Store Account
                                   id="name"
                                   aria-describedby="emailHelp"
                                   name="name"
-                                  value="Papel La Casa"
+                                  value="{{ $user->name }}"
                                 />
                               </div>
                             </div>
@@ -45,58 +46,34 @@ UMKMJaksel Store Account
                                   id="email"
                                   aria-describedby="emailHelp"
                                   name="email"
-                                  value="email@gmail.com"
+                                  value="{{ $user->email }}"
                                 />
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="addressOne">Alamat 1</label>
+                                <label for="address_one">Alamat 1</label>
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="addressOne"
+                                  id="address_one"
                                   aria-describedby="emailHelp"
-                                  name="addressOne"
-                                  value="Setra Duta Cemara"
+                                  name="address_one"
+                                  value="{{ $user->address_one}}"
                                 />
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="addressTwo">Alamat 2</label>
+                                <label for="address_two">Alamat 2</label>
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="addressTwo"
+                                  id="address_two"
                                   aria-describedby="emailHelp"
-                                  name="addressTwo"
-                                  value="Blok B2 No. 34"
+                                  name="address_two"
+                                  value="{{ $user->address_two }}"
                                 />
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="province">Provinsi</label>
-                                <select
-                                  name="province"
-                                  id="province"
-                                  class="form-control"
-                                >
-                                  <option value="West Java">West Java</option>
-                                </select>
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                <label for="city">Kota/Kabupaten</label>
-                                <select
-                                  name="city"
-                                  id="city"
-                                  class="form-control"
-                                >
-                                  <option value="Bandung">Bandung</option>
-                                </select>
                               </div>
                             </div>
                             <div class="col-md-4">
@@ -105,21 +82,9 @@ UMKMJaksel Store Account
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="postalCode"
-                                  name="postalCode"
-                                  value="40512"
-                                />
-                              </div>
-                            </div>
-                            <div class="col-md-6">
-                              <div class="form-group">
-                                <label for="country">Negara</label>
-                                <input
-                                  type="text"
-                                  class="form-control"
-                                  id="country"
-                                  name="country"
-                                  value="Indonesia"
+                                  id="zip_code"
+                                  name="zip_code"
+                                  value="{{ $user->zip_code }}"
                                 />
                               </div>
                             </div>
@@ -129,9 +94,9 @@ UMKMJaksel Store Account
                                 <input
                                   type="text"
                                   class="form-control"
-                                  id="mobile"
-                                  name="mobile"
-                                  value="+628 2020 11111"
+                                  id="phone_number"
+                                  name="phone_number"
+                                  value="{{ $user->phone_number }}"
                                 />
                               </div>
                             </div>

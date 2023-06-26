@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('description');
+            $table->string('photo_profile')->nullable();
+
             
             $table->longText('address_one');
             $table->longText('address_two');

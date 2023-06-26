@@ -44,6 +44,9 @@
                     <div class="form-group">
                       <label>Pemilik Product</label>
                       <select name="users_id" class="form-control">
+                         @php
+    $users = App\Models\User::all(); // Mengambil semua data pengguna dari model User (pastikan Anda mengganti model yang sesuai)
+  @endphp
                         @foreach ($users as $user)
                           <option value="{{ $user->id }}">{{ $user->name }}</option>
                         @endforeach

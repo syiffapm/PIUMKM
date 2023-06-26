@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-UMKMJaksel Kategori
+UMKMJaksel Toko
 @endsection
 
 

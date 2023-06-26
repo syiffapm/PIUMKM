@@ -7,15 +7,16 @@
             <div class="row align-items-center row-login">
                 <div class="col-lg-6 text-center">
                     <img
-                    src="/images/login-placeholder.png"
+                    src="/images/login-placeholder.svg"
                     alt=""
-                    class="w-50 mb-4 mb-lg-none"
+                    class="w-10 mb-4 mb-lg-none"
+                    style="border-radius: 50%"
                     />
                 </div>
                 <div class="col-lg-5">
                     <h2>
-                        Belanja kebutuhan utama, <br />
-                        menjadi lebih mudah
+                        Berbinis Jadi Lebih Mudah, <br />
+                        bersama UMKMJaksel
                     </h2>
                     <form method="POST" action="{{ route('login') }}" class="mt-3">
                         @csrf
@@ -49,7 +50,7 @@
                             href="{{ route('register') }}"
                             class="btn btn-signup btn-block w-75 mt-2"
                         >
-                            Sign Up
+                            Belum Punya Akun
                         </a>
                     </form>
                 </div>

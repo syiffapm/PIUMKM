@@ -48,6 +48,23 @@ Produk
 
 @push('addon-script')
     <script>
+        // Fungsi untuk mengubah angka menjadi format rupiah
+        function formatRupiah(angka) {
+            var numberString = angka.toString();
+            var split = numberString.split(',');
+            var sisa = split[0].length % 3;
+            var rupiah = split[0].substr(0, sisa);
+            var ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if (ribuan) {
+                var separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
+            return 'Rp ' + rupiah;
+        }
+
         // AJAX DataTable
         var datatable = $('#crudTable').DataTable({
             processing: true,
@@ -61,7 +78,13 @@ Produk
                 { data: 'name', name: 'name' },
                 { data: 'user.store_name', name: 'user.store_name' },
                 { data: 'category.name', name: 'category.name' },
-                { data: 'price', name: 'price' },
+                {
+                    data: 'price',
+                    name: 'price',
+                    render: function (data) {
+                        return formatRupiah(data);
+                    }
+                },
                 {
                     data: 'action',
                     name: 'action',
