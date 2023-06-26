@@ -6,20 +6,20 @@ UMKMJaksel Detail Toko
 
 @section('content')
 <div class="page-content page-details">
-        <section class="section-title-profile-umkm">
-            <div class="container">
-                <div class="row justify-content-center text-center">
-                    <div class="col-lg-12 col-md-12">
-                        <h3>PROFILE UMKM</h3>
-                        <p>Detail profile anggota UMKM binaan kami</p>
-                    </div>
+    <section class="section-title-profile-umkm">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-12 col-md-12">
+                    <h3>PROFILE UMKM</h3>
+                    <p>Detail profile anggota UMKM binaan kami</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
     <!-- Konten Profile UMKM -->
 
-        <section class="section-profile-umkm">
+    <section class="section-profile-umkm">
         <div class="container">
             <div class="row deskripsi">
                 <!-- Deskripsi singkat & photo di kiri layar -->
@@ -77,7 +77,7 @@ UMKMJaksel Detail Toko
                                     <div class="card">
                                         <div class="card-body p-0">
                                             <iframe
-                                                src=""
+                                                src="{{ $location }}"
                                                 width="100%" height="auto" style="border:0;" allowfullscreen=""
                                                 loading="lazy"></iframe>
                                         </div>
@@ -90,24 +90,11 @@ UMKMJaksel Detail Toko
                                     <h4>Demo Produk</h4>
                                     <hr>
                                     <div class="owl-carousel owl-theme">
+                                        @foreach ($products as $product)
                                         <div class="item">
-                                            <img src="assets/images/banner-umkm-small.jpg" alt="">
+                                            <img src="{{ $product->image }}" alt="">
                                         </div>
-                                        <div class="item">
-                                            <img src="assets/images/banner-umkm-small.jpg" alt="">
-                                        </div>
-                                        <div class="item">
-                                            <img src="assets/images/banner-umkm-small.jpg" alt="">
-                                        </div>
-                                        <div class="item">
-                                            <img src="assets/images/banner-umkm-small.jpg" alt="">
-                                        </div>
-                                        <div class="item">
-                                            <img src="assets/images/banner-umkm-small.jpg" alt="">
-                                        </div>
-                                        <div class="item">
-                                            <img src="assets/images/banner-umkm-small.jpg" alt="">
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

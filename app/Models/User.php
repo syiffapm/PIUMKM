@@ -28,7 +28,9 @@ class User extends Authenticatable
         'address_one', 
         'address_two',
          'zip_code',
-          'phone_number'
+          'phone_number',
+          'photo_profile'
+
     ];
 
     /**

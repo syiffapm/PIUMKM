@@ -79,10 +79,6 @@ UMKMJaksel Detail Produk
         Pesan Produk
     </a>
 </div>
-
-
-
-
               </div>
             </div>
           </div>

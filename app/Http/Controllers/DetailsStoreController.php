@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Product;
 
 class DetailsStoreController extends Controller
 {
@@ -18,18 +19,30 @@ class DetailsStoreController extends Controller
     }
 
     
-    public function showProfile()
-    {
-        $users = User::first(); // Ganti ini dengan metode pengambilan data yang sesuai (misalnya, berdasarkan ID)
+public function showProfile()
+{
+    $user = User::first(); // Ubah ini untuk mengambil user yang spesifik sesuai kebutuhan Anda
 
-        return view('pages.details-store', [
-           'store_name' => $users->store_name,
-        'nama' => $users->name,
-        'description' => $users->description ?? '', // Jika description tidak ada, berikan nilai default kosong
-        'address_one' => $users->address_one ?? '', // Jika address_one tidak ada, berikan nilai default kosong
-        'phone_number' => $users->phone_number ?? '', // Jika phone_number tidak ada, berikan nilai default kosong
-        'email' => $users->email ?? '',
-        'location' => $users->location ?? '',
-        ]);
+    if (!$user) {
+        // Tangani kasus ketika user tidak ditemukan
+        // Misalnya, tampilkan pesan error atau redirect ke halaman lain
     }
+
+    $products = Product::all();
+
+    return view('pages.details-store', [
+        'store_name' => $user->store_name,
+        'nama' => $user->name,
+        'photo_profile' => $user->photo_profile,
+        'description' => $user->description ?? '', // Berikan nilai default jika description null
+        'address_one' => $user->address_one ?? '', // Berikan nilai default jika address_one null
+        'phone_number' => $user->phone_number ?? '', // Berikan nilai default jika phone_number null
+        'email' => $user->email ?? '',
+        'location' => $user->location ?? '',
+        'products' => $products ?? ''
+    ]);
+}
+
+
+
 }

@@ -38,9 +38,9 @@ Route::middleware(['auth'])->group(function () {
 
          Route::delete('/product/{id}', [App\Http\Controllers\DashboardProductController::class, 'destroy'])->name('dashboard-products.destroy');
 
-        Route::get('/product/gallery/delete/{id}', [DashboardProductController::class, 'delete'])->name('dashboard-product-gallery-delete');
+        Route::get('/product/gallery/delete/{id}', [App\Http\Controllers\DashboardProductController::class, 'delete'])->name('dashboard-product-gallery-delete');
 
-      Route::post('/product/gallery/upload', [DashboardProductController::class, 'uploadGallery'])->name('dashboard-product-gallery-upload');
+      Route::post('/product/gallery/upload', [App\Http\Controllers\DashboardProductController::class, 'uploadGallery'])->name('dashboard-product-gallery-upload');
 
         Route::get('/settings', [App\Http\Controllers\DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
 
