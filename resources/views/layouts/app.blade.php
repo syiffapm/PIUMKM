@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
       
-    <link rel="shortcut icon" href="{{ asset('images/logo1.svg') }}">
+    <link rel="shortcut icon" href="{{ asset('/images/ksbi.png') }}">
 
     <title>@yield('title')</title>
    

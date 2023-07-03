@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Admin\ProductRequest;
 
+
 class ProductController extends Controller
 {
     /**
@@ -118,7 +119,7 @@ class ProductController extends Controller
         
         return view('pages.admin.product.edit',[
             'item' => $item,
-            'user' => $users,
+            'users' => $users,
             'categories' => $categories
             
         ]);

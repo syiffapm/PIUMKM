@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-UMKMJaksel
+KSBI
 @endsection
 
 @section('content')
@@ -30,6 +30,34 @@ UMKMJaksel
   </div>
 </section>
 
+ <!-- UMKM KSBI Explanation Section -->
+  <section class="store-umkm-ksbi">
+    <div class="container">
+      <div class="row">
+        <div class="col-12" data-aos="fade-up">
+          <h5>UMKM Komunitas Sukses Berjamaah (KSBI)</h5>
+          <p>
+           UMKM Komunitas Sukses Berjamaah Indonesia, adalah kelompok UMKM di daerah Jakarta Selatan. UMKM kami mendorong para pengusaha yang sedang merintis bisnisnya untuk dibantu proses pemasarannya. Mitra dibantu dengan mudah oleh team dan di fasilitasi sistem yang mudah dimengerti untuk mengelola proses penjualannya.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Register UMKM Section -->
+  <section class="store-register-umkm">
+    <div class="container">
+      <div class="row">
+        <div class="col-12" data-aos="fade-up">
+          <h5>Kaya Ingin Memajukan UMKM-mu?</h5>
+          <p>
+            Bergabunglah dengan UMKM KSBI sekarang dan nikmati berbagai keuntungannya! Daftarkan UMKM Anda di sini dan jadilah bagian dari komunitas UMKM yang maju bersama.
+          </p>
+          <a href="{{ route('register') }}" class="btn btn-success mt-3">Daftar Sekarang</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
       <!-- kategori favorit -->
       <section class="store-trend-categories">
@@ -120,3 +148,56 @@ UMKMJaksel
       </section>
     </div>
 @endsection
+
+<style>
+  .store-umkm-ksbi {
+    background-color: #f5f5f5;
+    padding: 80px 0;
+  }
+
+  .store-umkm-ksbi h5 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .store-umkm-ksbi p {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  .store-register-umkm {
+    background-color: #fff;
+    padding: 80px 0;
+    text-align: center;
+  }
+
+  .store-register-umkm h5 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .store-register-umkm p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  .store-register-umkm .btn {
+    font-size: 16px;
+    padding: 10px 30px;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .store-register-umkm .btn:hover {
+    background-color: #218838;
+  }
+</style>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-UMKMJaksel Detail Produk
+KSBI Detail Produk
 @endsection
 
 @section('content')
@@ -71,14 +71,25 @@ UMKMJaksel Detail Produk
             <div class="row">
               <div class="col-lg-8">
                 <h1>{{ $product->name }}</h1>
-                <div class="owner">{{ $product->user->store_name }}</div>
+                <div class="owner">
+  <a href="{{ route('details-store', $product->user->id) }}">{{ $product->user->store_name }}</a>
+</div>
+
                 <div class="price">Rp {{ number_format($product->price) }}</div>
               </div>
-          <div class="col-lg-2" data-aos="zoom-in">
-    <a href="https://web.whatsapp.com/send?phone={{ $product->user->phone_number }}&text=Halo, saya tertarik dengan produk ini. Bagaimana format pemesanannya?." class="btn btn-success px-4 text-white btn-block mb-3">
-        Pesan Produk
-    </a>
+
+       <div class="col-lg-2" data-aos="zoom-in">
+    @if ($user && $user->store_status == 1)
+        <a href="https://api.whatsapp.com/send?phone={{ $user->phone_number }}&text=Halo, saya tertarik dengan produk ini. Bagaimana format pemesanannya?." class="btn btn-success px-4 text-white btn-block mb-3">
+            Pesan Sekarang
+        </a>
+    @endif
 </div>
+
+
+
+</div>
+
               </div>
             </div>
           </div>

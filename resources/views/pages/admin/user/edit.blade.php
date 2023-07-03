@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-  Pengaturan Toko
+  Pengguna
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@
 >
   <div class="container-fluid">
     <div class="dashboard-heading">
-        <h2 class="dashboard-title">User</h2>
+        <h2 class="dashboard-title">Pengguna</h2>
         <p class="dashboard-subtitle">
-            Edit "{{ $item->name }}" User
+            Edit "{{ $item->name }}" Pengguna
         </p>
     </div>
     <div class="dashboard-content">
@@ -37,19 +37,19 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Nama User</label>
+                      <label>Nama Pengguna</label>
                       <input type="text" class="form-control" name="name" value="{{ $item->name }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Email User</label>
+                      <label>Email Pengguna</label>
                       <input type="text" class="form-control" name="email" value="{{ $item->email }}" required />
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Password User</label>
+                      <label>Password Pengguna</label>
                       <input type="text" class="form-control" name="password" />
                       <small>Kosongkan jika tidak ingin mengganti password</small>
                     </div>

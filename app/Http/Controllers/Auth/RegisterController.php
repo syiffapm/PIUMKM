@@ -19,7 +19,7 @@ class RegisterController extends Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
+    | validation and creation. By default, this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
     */
@@ -43,7 +43,7 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
- /**
+    /**
      * Show the application registration form.
      *
      * @return \Illuminate\View\View
@@ -51,11 +51,10 @@ class RegisterController extends Controller
     public function showRegistrationForm()
     {
         $categories = Category::all();
-        return view('auth.register',[
+        return view('auth.register', [
             'categories' => $categories
         ]);
     }
-
 
     /**
      * Get a validator for an incoming registration request.
@@ -69,10 +68,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-             'store_name' => ['nullable', 'string', 'max:255', ],
-              'categories_id' => ['nullable', 'integer', 'exists:categories,id'],
-               'is_store_open' => ['required'],
-        ]);
+            'store_name' => ['nullable', 'string', 'max:255'],
+            'categories_id' => ['nullable', 'integer', 'exists:categories,id'],
+          ]);
     }
 
     /**
@@ -88,16 +86,18 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'store_name' => isset($data['store_name']) ? $data['store_name'] : '',
-            'categories_id' =>  isset($data['categories_id']) ? $data['categories_id'] : null,
-            'store_status' =>  isset($data['is_store_open']) ? 1 : 0,
+            'categories_id' => isset($data['categories_id']) ? $data['categories_id'] : null,
+         
         ]);
     }
 
-    public function success() {
+    public function success()
+    {
         return view('auth.success');
     }
 
-    public function check(Request $request) {
+    public function check(Request $request)
+    {
         return User::where('email', $request->email)->count() > 0 ? 'unavailable' : 'Available';
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-UMKMJaksel 
+KSBI 
 @endsection
 
 
@@ -29,11 +29,11 @@ UMKMJaksel
                   <div
                     class="products-image"
                     style="
-                     @if($user->photos)
-                                            background-image: url('{{ Storage::url($user->photos->first()->photos) }}');
-                                        @else
-                                            background-color: #eee;
-                                        @endif
+                     @if($user->products->count() > 0 && $user->products->first()->galleries->count() > 0)
+                       background-image: url('{{ Storage::url($user->products->first()->galleries->first()->photos) }}');
+                     @else
+                       background-color: #eee;
+                     @endif
                     "
                   ></div>
                 </div>
@@ -43,10 +43,11 @@ UMKMJaksel
                @empty
               <div class="col-12 text-center py-5" data-aos="fade-up"
               data-aos-delay="100">
-                Tidak ada Kategori yang ditemukkan
+                Tidak ada Mitra yang ditemukan
               </div>
             @endforelse
           </div>
         </div>
       </section>
     </div>
+@endsection

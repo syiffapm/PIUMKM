@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-  Store Settings
+  Produk
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
     <div class="dashboard-heading">
         <h2 class="dashboard-title">Product</h2>
         <p class="dashboard-subtitle">
-            Create New Product
+            Buat Produk Baar
         </p>
     </div>
     <div class="dashboard-content">
@@ -82,7 +82,7 @@
                       type="submit"
                       class="btn btn-success px-5"
                     >
-                      Save Now
+                     Simpan Data
                     </button>
                   </div>
               </div>

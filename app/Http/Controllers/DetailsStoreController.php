@@ -8,7 +8,7 @@ use App\Models\Product;
 
 class DetailsStoreController extends Controller
 {
-     /**
+    /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -18,31 +18,25 @@ class DetailsStoreController extends Controller
         return view('pages.details-store');
     }
 
-    
-public function showProfile()
+public function showProfile($userId)
 {
-    $user = User::first(); // Ubah ini untuk mengambil user yang spesifik sesuai kebutuhan Anda
+    $user = User::findOrFail($userId); // Find the user based on the provided ID
 
-    if (!$user) {
-        // Tangani kasus ketika user tidak ditemukan
-        // Misalnya, tampilkan pesan error atau redirect ke halaman lain
-    }
-
-    $products = Product::all();
+    $products = $user->products; // Retrieve the products for the user
 
     return view('pages.details-store', [
         'store_name' => $user->store_name,
         'nama' => $user->name,
         'photo_profile' => $user->photo_profile,
-        'description' => $user->description ?? '', // Berikan nilai default jika description null
-        'address_one' => $user->address_one ?? '', // Berikan nilai default jika address_one null
-        'phone_number' => $user->phone_number ?? '', // Berikan nilai default jika phone_number null
+        'description' => $user->description ?? '',
+        'address_one' => $user->address_one ?? '',
+        'phone_number' => $user->phone_number ?? '',
         'email' => $user->email ?? '',
         'location' => $user->location ?? '',
-        'products' => $products ?? ''
+        'user' => $user,
+        'products' => $products ?? []
     ]);
 }
-
 
 
 }

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top navbar-fixed-top" data-aos="fade-down">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="/images/logo.png" alt="" />
+            <img src="/images/ksbi.png" alt="" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +27,7 @@
                 </li>
                 @endguest
             </ul>
+           
             @auth
             <!-- Desktop Menu -->
             <ul class="navbar-nav d-none d-lg-flex">
@@ -37,7 +38,10 @@
                     </a>
                     <div class="dropdown-menu">
                         <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                        <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item">Settings</a>
+                        @if (Auth()->user()->roles == 'ADMIN')
+ <div class="dropdown-divider"></div>
+ <a href="{{ route('admin-dashboard') }}" class="dropdown-item">Admin</a>
+ @endif
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

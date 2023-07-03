@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-UMKMJaksel Detail Toko
+KSBI Detail Toko
 @endsection
 
 @section('content')
@@ -11,30 +11,24 @@ UMKMJaksel Detail Toko
             <div class="row justify-content-center text-center">
                 <div class="col-lg-12 col-md-12">
                     <h3>PROFILE UMKM</h3>
-                    <p>Detail profile anggota UMKM binaan kami</p>
+                    <h1>{{ $store_name }}</h1>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Konten Profile UMKM -->
-
+    <!-- Profile section -->
     <section class="section-profile-umkm">
         <div class="container">
-            <div class="row deskripsi">
-                <!-- Deskripsi singkat & photo di kiri layar -->
-                <div class="col-lg-4 col-md-12 deskripsi-singkat mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="assets/images/banner-umkm-small.jpg" class="img-fluid rounded"
-                                style="width: 100%; height: auto;" alt="">
-                            <h4 class="text-center mt-4">Deskripsi Singkat</h4>
-                            <hr>
-                            <p>{{ $description }}</p>
-                        </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-12">
+                    <div class="deskripsi">
+                        <h4 class="text-center mt-4">Deskripsi Singkat</h4>
+                        <br>
+                        <br>
+                        {{ $description }}
                     </div>
                 </div>
-                <!-- Deskripsi lengkap di kanan layar -->
+
                 <div class="col-lg-8 col-md-12 deskripsi-lengkap">
                     <div class="card">
                         <div class="card-body">
@@ -68,36 +62,37 @@ UMKMJaksel Detail Toko
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Marketplace & Maps -->
-                            <div class="row item4">
-                                <div class="col-lg-6 col-md-6">
-                                    <h4>Lokasi Usaha</h4>
-                                    <hr>
-                                    <div class="card">
-                                        <div class="card-body p-0">
-                                            <iframe
-                                                src="{{ $location }}"
-                                                width="100%" height="auto" style="border:0;" allowfullscreen=""
-                                                loading="lazy"></iframe>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Produk UMKM -->
-                            <div class="row produk mt-4">
-                                <div class="col-lg-12 col-md-12">
-                                    <h4>Demo Produk</h4>
-                                    <hr>
-                                    <div class="owl-carousel owl-theme">
-                                        @foreach ($products as $product)
-                                        <div class="item">
-                                            <img src="{{ $product->image }}" alt="">
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
+
+                          <h4>Products:</h4>
+<div class="row">
+    @foreach ($products as $product)
+        <div class="col-6 col-md-4 col-lg-3"
+            data-aos="fade-up"
+            data-aos-delay="{{ $loop->index * 100 }}"
+        >
+            <a href="{{ route('details', $product->slug) }}" class="component-products d-block">
+                <div class="products-thumbnail">
+                    <div class="products-image"
+                        style="
+                            @if($product->galleries->count())
+                                background-image: url('{{ Storage::url($product->galleries->first()->photos) }}')
+                            @else
+                                background-color: #eee
+                            @endif
+                        "
+                    ></div>
+                </div>
+                <div class="products-text">
+                    {{ $product->name }}
+                </div>
+                <div class="products-price">
+                    Rp {{ number_format($product->price) }}
+                </div>
+            </a>
+        </div>
+    @endforeach
+</div>
+
                         </div>
                     </div>
                 </div>
@@ -106,6 +101,7 @@ UMKMJaksel Detail Toko
     </section>
 </div>
 @endsection
+
 
 @push('addon-script')
     <script>

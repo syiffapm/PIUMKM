@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="shortcut icon" href="{{ asset('images/logo1.svg')}}">
+    <link rel="shortcut icon" href="{{ asset('/images/ksbi.png')}}">
     <title>@yield('title')</title>
 
     @stack('prepend-style')
@@ -103,7 +103,7 @@
                         Hi, {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu">
-                        <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+                        <a href="{{ route('home') }}" class="dropdown-item">Home</a>
                         <a href="{{ route('dashboard-settings-account') }}" class="dropdown-item">
                             Settings
                         </a>

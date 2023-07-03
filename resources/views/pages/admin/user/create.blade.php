@@ -4,8 +4,8 @@
     <div class="section-content section-dashboard-home">
         <div class="container-fluid">
             <div class="dashboard-heading">
-                <h2 class="dashboard-title">User</h2>
-                <p class="dashboard-subtitle">Buat User Baru</p>
+                <h2 class="dashboard-title">Pengguna</h2>
+                <p class="dashboard-subtitle">Buat Pengguna Baru</p>
             </div>
             <div class="dashboard-content">
                 <div class="row">
@@ -13,7 +13,7 @@
                         @if ($errors->any())
                             <div class="alert alert-danger">
                             <ul>
-                                @foreach ($errors->all() as $errors )
+                                @foreach ($errors->all() as $error )
                                     <li>{{ $error }}</li>
                                 @endforeach
                             </ul>
@@ -26,19 +26,19 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Nama User</label>
+                      <label>Nama Pengguna</label>
                       <input type="text" class="form-control" name="name" required />
                     </div>
                   </div>
                    <div class="col-md-12">
                     <div class="form-group">
-                      <label>Email User</label>
+                      <label>Email Pengguna</label>
                       <input type="text" class="form-control" name="email">
                     </div>
                   </div>
                     <div class="col-md-12">
                     <div class="form-group">
-                      <label>Password User</label>
+                      <label>Password Pengguna</label>
                       <input type="password" class="form-control" name="password" required />
                     </div>
                   </div>

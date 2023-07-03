@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-UMKMJaksel Store Setting
+Pengaturan Toko
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@ UMKMJaksel Store Setting
             <div class="dashboard-content">
                 <div class="row">
                     <div class="col-12">
-                        <form action="{{ route('dashboard-settings-redirect', 'dashboard-settings-store' ) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('dashboard-settings-update', 'dashboard-settings-store' ) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="card">
                                 <div class="card-body">

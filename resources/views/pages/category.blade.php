@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Store Category Page
+    Kategori
 @endsection
 
 @section('content')
@@ -11,7 +11,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12" data-aos="fade-up">
-              <h5>All Categories</h5>
+              <h5>Semua Kategori</h5>
             </div>
           </div>
           <div class="row">
@@ -50,7 +50,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12" data-aos="fade-up">
-              <h5>All Products</h5>
+              <h5>Semua Produk</h5>
             </div>
           </div>
           <div class="row">

@@ -1,15 +1,12 @@
 @extends('layouts.admin')
 
 @section('title')
-   Product Gallery
+   Product Galeri
 @endsection
 
 @section('content')
 <!-- Section Content -->
-<div
-    class="section-content section-dashboard-home"
-    data-aos="fade-up"
-    >
+<div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
         <div class="dashboard-heading">
             <h2 class="dashboard-title">Product Gallery</h2>
@@ -28,12 +25,12 @@
                             <div class="table-responsive">
                                 <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                     <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Produk</th>
-                                        <th>Foto</th>
-                                        <th>Aksi</th>
-                                    </tr>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Produk</th>
+                                            <th>Foto</th>
+                                            <th>Aksi</th>
+                                        </tr>
                                     </thead>
                                     <tbody></tbody>
                                 </table>
@@ -47,29 +44,27 @@
 </div>
 @endsection
 
-
 @push('addon-script')
-    <script>
-        // AJAX DataTable
-        var datatable = $('#crudTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ordering: true,
-            ajax: {
-                url: '{!! url()->current() !!}',
-            },
-            columns: [
-                { data: 'id', name: 'id' },
-                { data: 'product.name', name: 'product.name' },
-                { data: 'photos', name: 'photos' },
-                {
-                    data: 'action',
-                    name: 'action',
-                    orderable: false,
-                    searchable: false,
-                    width: '15%'
-                },
-            ]
-        });
-    </script>
+<script>
+    // AJAX DataTable
+    var datatable = $('#crudTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ordering: true,
+        ajax: '{!! url()->current() !!}',
+      columns: [
+    { data: 'id', name: 'id' },
+    { data: 'product.name', name: 'product.name' },
+    { data: 'photos', name: 'photos' },
+    {
+        data: 'action',
+        name: 'action',
+        orderable: false,
+        searchable: false,
+        width: '15%'
+    },
+]
+
+    });
+</script>
 @endpush

@@ -29,7 +29,7 @@ class User extends Authenticatable
         'address_two',
          'zip_code',
           'phone_number',
-          'photo_profile'
+          'description'
 
     ];
 
@@ -53,5 +53,10 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    
+   public function products()
+{
+    return $this->hasMany(Product::class, 'users_id');
+}
+
+
 }

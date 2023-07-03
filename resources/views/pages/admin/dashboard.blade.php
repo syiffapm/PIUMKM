@@ -25,7 +25,7 @@ UMKMJaksel Dashboard
                           Produk
                         </div>
                         <div class="dashboard-card-subtitle">
-                          15,209
+                          {{ $product }}
                         </div>
                       </div>
                     </div>
@@ -37,89 +37,37 @@ UMKMJaksel Dashboard
                           Mitra
                         </div>
                         <div class="dashboard-card-subtitle">
-                          $931,290
+                          {{ $user }}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="row mt-3">
-                  <div class="col-12 mt-2">
-                    <h5 class="mb-3">Produk Terbaru</h5>
-                    <a
-                      class="card card-list d-block"
-                      href="/dashboard-transactions-details.html"
-                    >
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-1">
-                            <img
-                              src="/images/dashboard-icon-product-1.png"
-                              alt=""
-                            />
-                          </div>
-                          <div class="col-md-4">
-                            Shirup Marzzan
-                          </div>
-                          <div class="col-md-1 d-none d-md-block">
-                            <img
-                              src="/images/dashboard-arrow-right.svg"
-                              alt=""
-                            />
-                          </div>
+                
+         <div class="row mt-3">
+    <div class="col-12 mt-2">
+        <h5 class="mb-3">Produk Terbaru</h5>
+        @foreach ($product_data->take(100) as $product)
+            <a class="card card-list d-block" href="{{ route('product.index', $product->id) }}">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-1">
+                            <img src="{{ Storage::url($product->galleries->first()->photos ?? '') }}" class="w-75" />
                         </div>
-                      </div>
-                    </a>
-                    <a
-                      class="card card-list d-block"
-                      href="/dashboard-transactions-details.html"
-                    >
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-1">
-                            <img
-                              src="/images/dashboard-icon-product-2.png"
-                              alt=""
-                            />
-                          </div>
-                          <div class="col-md-4">
-                            LeBrone X
-                          </div>
-                          <div class="col-md-1 d-none d-md-block">
-                            <img
-                              src="/images/dashboard-arrow-right.svg"
-                              alt=""
-                            />
-                          </div>
+                        <div class="col-md-4">
+                            {{ $product->name ?? '' }}
                         </div>
-                      </div>
-                    </a>
-                    <a
-                      class="card card-list d-block"
-                      href="/dashboard-transactions-details.html"
-                    >
-                      <div class="card-body">
-                        <div class="row">
-                          <div class="col-md-1">
-                            <img
-                              src="/images/dashboard-icon-product-3.png"
-                              alt=""
-                            />
-                          </div>
-                          <div class="col-md-4">
-                            Soffa Lembutte
-                          </div>
-                          <div class="col-md-1 d-none d-md-block">
-                            <img
-                              src="/images/dashboard-arrow-right.svg"
-                              alt=""
-                            />
-                          </div>
+                        <div class="col-md-3">{{ $product->created_at ?? '' }}</div>
+                        <div class="col-md-1 d-none d-md-block">
+                            <img src="/images/dashboard-arrow-right.svg" alt="" />
                         </div>
-                      </div>
-                    </a>
-                  </div>
+                    </div>
                 </div>
+            </a>
+        @endforeach
+    </div>
+</div>
+
               </div>
             </div>
           </div>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
- Product Gallery
+ Product Galeri
 @endsection
 
 @section('content')

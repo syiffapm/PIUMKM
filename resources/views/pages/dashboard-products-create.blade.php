@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    Store Dashboard Product Detail
+Dashboard Produk Detail
 @endsection
 
 @section('content')
@@ -37,7 +37,7 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label>nama Produk</label>
+                      <label>Nama Produk</label>
                       <input type="text" class="form-control" name="name"/>
                     </div>
                   </div>

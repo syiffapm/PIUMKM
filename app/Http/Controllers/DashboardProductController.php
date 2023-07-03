@@ -47,7 +47,7 @@ class DashboardProductController extends Controller
 
     }
 
-    public function delete(Request $request, $id)
+    public function deleteGallery(Request $request, $id)
     {
         $item = ProductGallery::findOrFail($id);
         $item->delete();
@@ -69,18 +69,16 @@ class DashboardProductController extends Controller
 {
     $data = $request->all();
 
-   $data['slug'] = Str::slug($request->input('name'));
-
-
+   $data['slug'] = Str::slug($request->name);
     $product = Product::create($data);
 
-       $gallery = [
-    'products_id' => $product->id,
-    'photos' => $request->file('photos')->store('assets/product', 'public')
-];
-        ProductGallery::create($gallery);
-    
-
+       if ($request->hasFile('photos')) {
+    $gallery = [
+        'products_id' => $product->id,
+        'photos' => $request->file('photos')->store('assets/product', 'public')
+    ];
+    ProductGallery::create($gallery);
+}
     return redirect()->route('dashboard-product');
 }
 

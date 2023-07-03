@@ -4,7 +4,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Sentry\Laravel\Tracing\Middleware;
-use App\Http\Controllers\DashboardProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +23,7 @@ Route::get('/categories/{id}', [App\Http\Controllers\CategoryController::class, 
 Route::get('/details/{id}', [App\Http\Controllers\DetailsController::class, 'index'])->name('details');
 Route::get('/toko', [App\Http\Controllers\TokoController::class, 'index'])->name('toko');
 Route::get('/toko/details/{id}', [App\Http\Controllers\DetailsStoreController::class, 'showProfile'])->name('details-store');
+Route::get('/register/success', [App\Http\Controllers\Auth\RegisterController::class, 'success'])->name('register-success');
 
 
 Route::middleware(['auth'])->group(function () {
@@ -42,18 +43,14 @@ Route::middleware(['auth'])->group(function () {
 
       Route::post('/product/gallery/upload', [App\Http\Controllers\DashboardProductController::class, 'uploadGallery'])->name('dashboard-product-gallery-upload');
 
-        Route::get('/settings', [App\Http\Controllers\DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
+      Route::get('/settings', [App\Http\Controllers\DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
 
+Route::get('/account', [App\Http\Controllers\DashboardSettingController::class, 'account'])->name('dashboard-settings-account');
 
-
-        Route::get('/account', [App\Http\Controllers\DashboardSettingController::class, 'account'])->name('dashboard-settings-account');
-
-                Route::post('/settings/{redirect}', [App\Http\Controllers\DashboardSettingController::class, 'update'])->name('dashboard-settings-redirect');
+Route::post('/settings/{redirect}', [App\Http\Controllers\DashboardSettingController::class, 'update'])->name('dashboard-settings-update');
 
     });
 });
-
-
 
 
 Route::prefix('admin')
@@ -66,10 +63,9 @@ Route::prefix('admin')
         
         Route::resource('/user', App\Http\Controllers\Admin\UserController::class)->names('user');
         
-        Route::resource('/product', App\Http\Controllers\Admin\ProductController::class)->names('product');
-        
-        Route::resource('/product-gallery', App\Http\Controllers\Admin\ProductGalleryController::class)->names('product-gallery');
-});
-
+       Route::resource('product', App\Http\Controllers\Admin\ProductController::class)->names('product');
+Route::resource('product-gallery', App\Http\Controllers\Admin\ProductGalleryController::class)->names('product-gallery');
+    
+    });
 
 Auth::routes();

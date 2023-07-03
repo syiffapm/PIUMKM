@@ -76,7 +76,7 @@ Produk
             columns: [
                 { data: 'id', name: 'id' },
                 { data: 'name', name: 'name' },
-                { data: 'user.store_name', name: 'user.store_name' },
+                { data: 'user.name', name: 'user.name' },
                 { data: 'category.name', name: 'category.name' },
                 {
                     data: 'price',

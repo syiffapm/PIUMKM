@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-UMKMJaksel Dashboard Product
+Dashboard Product
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@ UMKMJaksel Dashboard Product
               <div class="dashboard-heading">
                 <h2 class="dashboard-title">Produk Saya</h2>
                 <p class="dashboard-subtitle">
-                  Manage it well and get money
+                  Kelola dan dapatkan keuntungannya!
                 </p>
               </div>
               <div class="dashboard-content">

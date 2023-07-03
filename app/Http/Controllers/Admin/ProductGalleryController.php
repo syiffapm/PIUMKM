@@ -1,19 +1,17 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
-
-use App\Models\User;
 use App\Models\Product;
-use App\Models\Category;
-use Illuminate\Support\Str;
-
-use Illuminate\Http\Request;
-
 use App\Models\ProductGallery;
+use App\Models\Category;
+use App\Models\User;
+
+
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\ProductGalleryRequest;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
-use App\Http\Requests\Admin\ProductGalleryRequest;
 
 class ProductGalleryController extends Controller
 {
@@ -48,24 +46,19 @@ class ProductGalleryController extends Controller
                                     </form>
                                 </div>
                             </div>
-                    </div>';
+                        </div>';
                 })
                 ->editColumn('photos', function ($item) {
                     return $item->photos ? '<img src="' . Storage::url($item->photos) . '" style="max-height: 80px;"/>' : '';
                 })
-                ->rawColumns(['action','photos'])
+                ->rawColumns(['action', 'photos'])
                 ->make();
         }
 
         return view('pages.admin.product-gallery.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+      public function create()
     {
         $products = Product::all();
         

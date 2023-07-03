@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-UMKMJaksel Store Account
+KSBI Pengaturan
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@ UMKMJaksel Store Account
         <div class="dashboard-content">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('dashboard-settings-redirect','dashboard-settings-account') }}"
+                    <form action="{{ route('dashboard-settings-update','dashboard-settings-account') }}"
                         method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card">
@@ -66,13 +66,14 @@ UMKMJaksel Store Account
                                                 name="phone_number" value="{{ $user->phone_number }}" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="photo">Foto Profile</label>
-                                            <input type="file" class="form-control" id="photo" name="photo" />
-                                        </div>
-                                    </div>
-                                </div>
+
+                     <div class="col-md-12">
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" rows="5">{{ $user->description }}</textarea>
+    </div>
+</div>
+
                                 <div class="row">
                                     <div class="col text-right">
                                         <button type="submit" class="btn btn-success px-5">Simpan Data</button>
@@ -86,4 +87,11 @@ UMKMJaksel Store Account
         </div>
     </div>
 </div>
+
+ @if(session('success'))
+        <div class="alert alert-success mt-4">
+            {{ session('success') }}
+        </div>
+    @endif
 @endsection
+

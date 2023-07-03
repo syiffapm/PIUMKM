@@ -9,13 +9,13 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <link rel="shortcut icon" href="{{ asset('images/logo1.svg')}}">
+    <link rel="shortcut icon" href="{{ asset('/images/ksbi.png')}}">
     <title>@yield('title')</title>
 
     @stack('prepend-style')
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link href="/style/main.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css"/>
+    <link href="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
     @stack('addon-style')
   </head>
 
@@ -30,7 +30,7 @@
           <div class="list-group list-group-flush">
             <a
               href="{{ route('admin-dashboard') }}"
-              class="list-group-item list-group-item-action"
+              class="list-group-item list-group-item-action {{ (request()->is('admin')) ? 'active' : '' }}"
               >Dashboard</a
             >
             <a
@@ -104,17 +104,17 @@
                       alt=""
                       class="rounded-circle mr-2 profile-picture"
                     />
-                    Hi, Angga
+                      Hi, {{ Auth::user()->name }}
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/index.html"
-                      >Back to Store</a
-                    >
-                    <a class="dropdown-item" href="/dashboard-account.html"
-                      >Settings</a
-                    >
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/">Logout</a>
+                     <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                               Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                   </div>
                 </li>
                 <li class="nav-item">
@@ -127,12 +127,7 @@
               <ul class="navbar-nav d-block d-lg-none mt-3">
                 <li class="nav-item">
                   <a class="nav-link" href="#">
-                    Hi, Angga
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link d-inline-block" href="#">
-                    Cart
+                    Hi, {{ Auth::user()->name }}
                   </a>
                 </li>
               </ul>
@@ -151,7 +146,7 @@
     @stack('prepend-script')
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs4/dt-1.13.4/datatables.min.js"></script>
     <script>
       $("#datatable").DataTable();
     </script>

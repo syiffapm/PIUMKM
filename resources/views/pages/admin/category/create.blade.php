@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-  Store Settings
+  Kategori
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@
 >
   <div class="container-fluid">
     <div class="dashboard-heading">
-        <h2 class="dashboard-title">Category</h2>
+        <h2 class="dashboard-title">Kategori</h2>
         <p class="dashboard-subtitle">
-            Create New Category
+            Buat Kategori Baru
         </p>
     </div>
     <div class="dashboard-content">
@@ -53,7 +53,7 @@
                       type="submit"
                       class="btn btn-success px-5"
                     >
-                      Save Now
+                      Simpan Data
                     </button>
                   </div>
               </div>

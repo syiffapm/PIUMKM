@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title')
-  Pengaturan Product
+Product
 @endsection
 
 @section('content')
@@ -12,9 +12,9 @@
 >
   <div class="container-fluid">
     <div class="dashboard-heading">
-        <h2 class="dashboard-title">Product</h2>
+        <h2 class="dashboard-title">Produk</h2>
         <p class="dashboard-subtitle">
-            Edit "{{ $item->name }}" Product
+            Edit "{{ $item->name }}" Produk
         </p>
     </div>
     <div class="dashboard-content">
@@ -37,14 +37,14 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Nama Product</label>
+                      <label>Nama Produk</label>
                       <input type="text" class="form-control" name="name" value="{{ $item->name }}" required />
                     </div>
                   </div>
 
                    <div class="col-md-12">
                     <div class="form-group">
-                      <label>Pemilik Product</label>
+                      <label>Pemilik Produk</label>
                       <select name="users_id" class="form-control">
                         <option value="{{ $item->users_id }}" selected>{{ $item->user->name }}</option>
                         @foreach ($users as $user )
@@ -56,7 +56,7 @@
 
                   <div class="col-md-12">
                     <div class="form-group">
-                      <label>Kategori Product</label>
+                      <label>Kategori Produk</label>
                       <select name="categories_id" class="form-control">
                         <option value="{{ $item->categories_id }}" selected>{{ $item->category->name }}</option>
                         @foreach ($categories as $category )
@@ -68,14 +68,14 @@
 
                    <div class="col-md-12">
                       <div class="form-group">
-                        <label>Harga Product</label>
+                        <label>Harga Produk</label>
                          <input type="number" name="price" class="form-control" value="{{ $item->price }}" required>
                       </div>
                    </div>
                     
                       <div class="col-md-12">
                         <div class="form-group">
-                          <label>Deskripsi Product</label>
+                          <label>Deskripsi Produk</label>
                            <textarea name="description" id="editor">{!!  $item->description !!}</textarea>
                          </div>
                       </div>
